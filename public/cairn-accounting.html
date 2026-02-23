@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cairn Accounting — Brisbane Small Business Accountants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --stone: #f7f5f1;
+  --white: #ffffff;
+  --ink: #1a1a18;
+  --moss: #3d5a47;
+  --moss-light: #eef2ef;
+  --gold: #b8903a;
+  --mid: #6b6860;
+  --rule: #e2ddd6;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.5rem 4rem;
+  background: rgba(247,245,241,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s;
+}
+nav.scrolled { border-color: var(--rule); }
+
+.logo {
+  display: flex; align-items: center; gap: .75rem;
+  text-decoration: none; color: var(--ink);
+}
+.logo-mark {
+  width: 32px; height: 32px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+}
+.logo-mark span {
+  background: var(--moss);
+  display: block;
+  transition: background .2s;
+}
+.logo-mark span:nth-child(2) { background: var(--gold); }
+.logo-mark span:nth-child(3) { background: transparent; border: 1.5px solid var(--moss); }
+.logo-mark span:nth-child(4) { background: var(--moss); opacity: .4; }
+.logo-name {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+.logo-tag {
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  font-weight: 300;
+  margin-left: .25rem;
+}
+
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--mid);
+  text-decoration: none;
+  letter-spacing: .02em;
+  transition: color .15s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  background: var(--moss) !important;
+  color: var(--white) !important;
+  padding: .6rem 1.4rem;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  transition: background .15s !important;
+}
+.nav-cta:hover { background: var(--ink) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--stone);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+.hero-left {
+  padding: 8rem 4rem 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: 11px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--moss);
+  font-weight: 500;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp .6s ease .2s forwards;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 1.5rem; height: 1.5px;
+  background: var(--moss);
+  display: block;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 5vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -.01em;
+  margin-bottom: 2rem;
+  color: var(--ink);
+  opacity: 0;
+  animation: fadeUp .7s ease .35s forwards;
+}
+h1 strong { font-weight: 600; }
+h1 em { font-style: italic; color: var(--moss); }
+
+.hero-sub {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--mid);
+  max-width: 420px;
+  margin-bottom: 3rem;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp .7s ease .5s forwards;
+}
+
+.hero-actions {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp .7s ease .65s forwards;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .875rem 2rem;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-decoration: none;
+  transition: all .2s;
+  cursor: pointer; border: none;
+}
+.btn-moss { background: var(--moss); color: var(--white); }
+.btn-moss:hover { background: var(--ink); }
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--rule);
+}
+.btn-outline:hover { border-color: var(--ink); }
+
+.hero-right {
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeIn .9s ease .4s forwards;
+}
+.hero-img-wrap {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #2d4435 0%, #3d5a47 40%, #4a7058 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Decorative office illustration */
+.office-graphic {
+  width: 100%; height: 100%;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.og-circle {
+  width: 380px; height: 380px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  position: absolute;
+  display: flex; align-items: center; justify-content: center;
+}
+.og-circle-inner {
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  display: flex; align-items: center; justify-content: center;
+}
+.og-card {
+  background: rgba(255,255,255,.12);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  text-align: center;
+  color: white;
+}
+.og-card-num {
+  font-family: var(--serif);
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: .25rem;
+}
+.og-card-label {
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .7;
+  font-weight: 300;
+}
+
+.hero-badge {
+  position: absolute;
+  bottom: 2.5rem; left: 2.5rem;
+  background: var(--gold);
+  color: white;
+  padding: .75rem 1.25rem;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 2px;
+}
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  background: var(--ink);
+  padding: 1.25rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: .75rem;
+  font-size: 12px;
+  letter-spacing: .05em;
+  color: rgba(255,255,255,.6);
+  font-weight: 300;
+}
+.trust-item::before {
+  content: '✓';
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ── SECTIONS ── */
+.section {
+  padding: 7rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-full {
+  padding: 7rem 4rem;
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--moss);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: .75rem;
+}
+.section-eyebrow::before {
+  content: '';
+  width: 2rem; height: 1.5px;
+  background: var(--moss);
+}
+
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+h2 em { font-style: italic; color: var(--moss); }
+h2 strong { font-weight: 600; }
+
+.section-sub {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--mid);
+  font-weight: 300;
+  max-width: 560px;
+}
+
+/* ── SERVICES ── */
+.services-wrap {
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.services-list { display: flex; flex-direction: column; gap: 1px; }
+
+.service-item {
+  border: 1px solid var(--rule);
+  border-bottom: none;
+  padding: 2rem 2.5rem;
+  cursor: pointer;
+  transition: background .2s;
+  background: var(--white);
+}
+.service-item:last-child { border-bottom: 1px solid var(--rule); }
+.service-item.active, .service-item:hover { background: var(--moss-light); }
+.service-item.active { border-color: var(--moss); }
+
+.si-num {
+  font-size: 10px;
+  letter-spacing: .15em;
+  color: var(--mid);
+  margin-bottom: .5rem;
+  text-transform: uppercase;
+}
+.si-name {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: .25rem;
+}
+.si-price {
+  font-size: 12px;
+  color: var(--moss);
+  font-weight: 500;
+}
+
+.service-detail {
+  position: sticky; top: 120px;
+  padding: 3rem;
+  background: var(--stone);
+  border: 1px solid var(--rule);
+}
+.sd-name {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: .5rem;
+}
+.sd-price {
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--moss);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.sd-desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--mid);
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+.sd-includes {
+  display: flex; flex-direction: column; gap: .5rem;
+  margin-bottom: 2rem;
+}
+.sd-inc {
+  display: flex; align-items: flex-start; gap: .75rem;
+  font-size: 13px; color: var(--ink); font-weight: 300;
+}
+.sd-inc::before { content: '→'; color: var(--moss); flex-shrink: 0; margin-top: 1px; }
+
+/* ── ABOUT ── */
+.about-bg { background: var(--stone); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 7rem 4rem;
+}
+.about-img {
+  background: linear-gradient(160deg, #2d4435, #3d5a47);
+  border-radius: 2px;
+  aspect-ratio: 4/5;
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: flex-end;
+}
+.about-img-inner {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.about-portrait-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.3);
+  gap: 1rem;
+}
+.portrait-circle {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.15);
+}
+.portrait-body {
+  width: 140px; height: 80px;
+  background: rgba(255,255,255,.06);
+  border-radius: 2px 2px 0 0;
+  border: 1px solid rgba(255,255,255,.1);
+}
+.about-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 2rem;
+  background: linear-gradient(transparent, rgba(0,0,0,.6));
+}
+.about-overlay-name {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: white;
+  font-weight: 400;
+  display: block;
+}
+.about-overlay-title {
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+}
+
+.about-body { font-size: 15px; line-height: 1.85; color: var(--mid); font-weight: 300; }
+.about-body p + p { margin-top: 1.25rem; }
+.about-quals {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.qual-badge {
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule);
+  padding: .4rem .9rem;
+  color: var(--mid);
+  background: var(--white);
+}
+
+/* ── PROCESS ── */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 4rem;
+}
+.ps-item {
+  background: var(--white);
+  padding: 2.5rem 2rem;
+  position: relative;
+}
+.ps-num {
+  font-family: var(--serif);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--rule);
+  line-height: 1;
+  margin-bottom: 1.25rem;
+}
+.ps-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: .5rem;
+  color: var(--ink);
+}
+.ps-body {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--mid);
+  font-weight: 300;
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials-bg { background: var(--moss); }
+.testimonials-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 7rem 4rem;
+}
+.testimonials-inner .section-eyebrow { color: rgba(255,255,255,.5); }
+.testimonials-inner .section-eyebrow::before { background: rgba(255,255,255,.3); }
+.testimonials-inner h2 { color: white; }
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.testimonial-card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  padding: 2rem;
+}
+.tc-quote {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,.85);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.tc-author {
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+.tc-biz {
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  margin-top: .2rem;
+  font-weight: 300;
+}
+
+/* ── CONTACT ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 7rem 4rem;
+}
+
+.contact-info { }
+.contact-detail {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.contact-detail:first-of-type { border-top: 1px solid var(--rule); }
+.cd-label {
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  font-weight: 400;
+  min-width: 80px;
+  padding-top: 2px;
+}
+.cd-val {
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 300;
+  line-height: 1.5;
+}
+.cd-val a { color: var(--moss); text-decoration: none; }
+
+.contact-form { }
+.cf-row { margin-bottom: 1.25rem; }
+.cf-row label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: .5rem;
+  font-weight: 400;
+}
+.cf-row input,
+.cf-row select,
+.cf-row textarea {
+  width: 100%;
+  background: var(--stone);
+  border: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  padding: .875rem 1.25rem;
+  outline: none;
+  transition: border-color .15s;
+  font-weight: 300;
+  border-radius: 0;
+  appearance: none;
+}
+.cf-row input:focus,
+.cf-row select:focus,
+.cf-row textarea:focus { border-color: var(--moss); background: var(--white); }
+.cf-row textarea { resize: vertical; min-height: 130px; }
+.cf-submit {
+  width: 100%;
+  background: var(--moss);
+  color: var(--white);
+  border: none;
+  padding: 1rem;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s;
+}
+.cf-submit:hover { background: var(--ink); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,.4);
+  padding: 2.5rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: .04em;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+footer a { color: rgba(255,255,255,.4); text-decoration: none; }
+footer strong { color: rgba(255,255,255,.7); font-weight: 400; }
+
+/* ── DEMO BANNER ── */
+.demo-banner {
+  position: fixed;
+  bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  background: var(--ink);
+  color: white;
+  padding: .75rem 1.5rem;
+  font-size: 11px;
+  letter-spacing: .08em;
+  z-index: 300;
+  display: flex; align-items: center; gap: 1rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,.25);
+  white-space: nowrap;
+}
+.demo-banner span { opacity: .5; }
+.demo-banner strong { color: var(--gold); font-weight: 500; }
+.demo-close {
+  opacity: .4; cursor: pointer; font-size: 14px;
+  background: none; border: none; color: white;
+  padding: 0 .25rem;
+}
+.demo-close:hover { opacity: 1; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 1.25rem 1.5rem; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 6rem 1.5rem 3rem; }
+  .hero-right { height: 300px; }
+  .section, .about-grid, .contact-grid { padding: 4rem 1.5rem; }
+  .section-full { padding: 4rem 1.5rem; }
+  .testimonials-inner { padding: 4rem 1.5rem; }
+  .services-wrap { grid-template-columns: 1fr; gap: 2rem; }
+  .service-detail { position: static; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-img { aspect-ratio: 16/9; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+  .trust-bar { padding: 1.25rem; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- DEMO BANNER -->
+<div class="demo-banner" id="demoBanner">
+  <span>Demo site by</span>
+  <strong>Vince Lapore</strong>
+  <span>·</span>
+  <span>Want this for your business?</span>
+  <strong><a href="mailto:hello@vincelapore.com" style="color:inherit">hello@vincelapore.com</a></strong>
+  <button class="demo-close" onclick="document.getElementById('demoBanner').style.display='none'">✕</button>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <div class="logo-mark">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div>
+      <span class="logo-name">Cairn</span>
+      <span class="logo-tag">Accounting</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#contact" class="btn nav-cta">Book a free call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Brisbane Small Business Accountants</div>
+    <h1>Numbers sorted.<br><em>Business</em><br><strong>growing.</strong></h1>
+    <p class="hero-sub">
+      Cairn takes care of your tax, bookkeeping, and financial strategy
+      so you can focus on running your business — not stressing about it.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-moss">Book a free call</a>
+      <a href="#services" class="btn btn-outline">Our services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <div class="office-graphic">
+        <div class="og-circle">
+          <div class="og-circle-inner">
+            <div class="og-card">
+              <div class="og-card-num">$0</div>
+              <div class="og-card-label">Surprise bills</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-badge">CPA Registered · Brisbane</div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">Fixed-fee pricing — no hourly surprises</div>
+  <div class="trust-item">Same-day response guaranteed</div>
+  <div class="trust-item">CPA qualified accountants</div>
+  <div class="trust-item">12+ years in Brisbane</div>
+  <div class="trust-item">Free initial consultation</div>
+</div>
+
+<!-- SERVICES -->
+<div class="section" id="services">
+  <div class="section-eyebrow reveal">What we do</div>
+  <h2 class="reveal" style="transition-delay:.1s">Everything your<br>business <em>actually needs.</em></h2>
+  <p class="section-sub reveal" style="transition-delay:.15s">
+    No jargon, no upselling. We match you with the services that will make the biggest difference to your bottom line.
+  </p>
+
+  <div class="services-wrap" style="margin-top: 4rem;">
+    <div class="services-list reveal" style="transition-delay:.1s">
+      <div class="service-item active" onclick="selectService(0, this)">
+        <div class="si-num">01</div>
+        <div class="si-name">Tax Returns</div>
+        <div class="si-price">From $350 / year</div>
+      </div>
+      <div class="service-item" onclick="selectService(1, this)">
+        <div class="si-num">02</div>
+        <div class="si-name">Bookkeeping</div>
+        <div class="si-price">From $200 / month</div>
+      </div>
+      <div class="service-item" onclick="selectService(2, this)">
+        <div class="si-num">03</div>
+        <div class="si-name">BAS Lodgement</div>
+        <div class="si-price">From $180 / quarter</div>
+      </div>
+      <div class="service-item" onclick="selectService(3, this)">
+        <div class="si-num">04</div>
+        <div class="si-name">Business Advisory</div>
+        <div class="si-price">From $150 / hour</div>
+      </div>
+      <div class="service-item" onclick="selectService(4, this)">
+        <div class="si-num">05</div>
+        <div class="si-name">SMSF</div>
+        <div class="si-price">From $1,800 / year</div>
+      </div>
+    </div>
+
+    <div class="service-detail reveal" style="transition-delay:.2s" id="serviceDetail">
+      <div class="sd-name" id="sdName">Tax Returns</div>
+      <div class="sd-price" id="sdPrice">From $350 / year · Fixed fee</div>
+      <div class="sd-desc" id="sdDesc">
+        Individual and business tax returns prepared accurately and lodged on time. We find every legal deduction — most clients are surprised how much they've been leaving on the table.
+      </div>
+      <div class="sd-includes" id="sdIncludes">
+        <div class="sd-inc">Full review of deductions and offsets</div>
+        <div class="sd-inc">Preparation and ATO lodgement</div>
+        <div class="sd-inc">Plain-English explanation of your return</div>
+        <div class="sd-inc">Fixed price — no surprises</div>
+      </div>
+      <a href="#contact" class="btn btn-moss">Book a free call</a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about-bg" id="about">
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <div class="about-img-inner">
+        <div class="about-portrait-placeholder">
+          <div class="portrait-circle"></div>
+          <div class="portrait-body"></div>
+        </div>
+      </div>
+      <div class="about-overlay">
+        <span class="about-overlay-name">Sarah Cairn</span>
+        <span class="about-overlay-title">Founder & Principal Accountant</span>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.15s">
+      <div class="section-eyebrow">About Cairn</div>
+      <h2>Built for small<br>business. <em>Full stop.</em></h2>
+      <div class="about-body">
+        <p>Cairn was started because most accounting firms are built around big corporate clients — small businesses get the junior staff and the templated advice. We flipped that.</p>
+        <p>Every client at Cairn works directly with a qualified accountant who knows their business personally. We don't farm your work out. We don't disappear after tax time. We're here when you have questions, year-round.</p>
+        <p>Based in Brisbane's inner suburbs, we work with trades, hospitality, healthcare, retail, and professional services across South East Queensland.</p>
+      </div>
+      <div class="about-quals">
+        <span class="qual-badge">CPA Australia</span>
+        <span class="qual-badge">Registered Tax Agent</span>
+        <span class="qual-badge">Xero Certified</span>
+        <span class="qual-badge">ASIC Registered</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="section" id="process">
+  <div class="section-eyebrow reveal">How it works</div>
+  <h2 class="reveal" style="transition-delay:.1s">Simple from<br><em>day one.</em></h2>
+  <div class="process-steps">
+    <div class="ps-item reveal">
+      <div class="ps-num">01</div>
+      <div class="ps-title">Free 30-min call</div>
+      <div class="ps-body">We learn about your business and what you actually need. No obligation, no pitch.</div>
+    </div>
+    <div class="ps-item reveal" style="transition-delay:.08s">
+      <div class="ps-num">02</div>
+      <div class="ps-title">Fixed quote</div>
+      <div class="ps-body">You get a clear, itemised quote before we start. The price you see is the price you pay.</div>
+    </div>
+    <div class="ps-item reveal" style="transition-delay:.16s">
+      <div class="ps-num">03</div>
+      <div class="ps-title">We get to work</div>
+      <div class="ps-body">Send us your documents, we handle the rest. We'll keep you updated without burying you in emails.</div>
+    </div>
+    <div class="ps-item reveal" style="transition-delay:.24s">
+      <div class="ps-num">04</div>
+      <div class="ps-title">Done — and ongoing</div>
+      <div class="ps-body">Everything lodged. Questions answered. We stick around as your financial partner, not just your tax agent.</div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testimonials-bg">
+  <div class="testimonials-inner">
+    <div class="section-eyebrow reveal">Client stories</div>
+    <h2 class="reveal" style="transition-delay:.1s; color: white">What Brisbane<br>businesses say.</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal" style="transition-delay:.1s">
+        <div class="tc-quote">"I used to dread tax time every year. Now I just send through my receipts and Cairn handles everything. First year with them I got back $4,200 more than my previous accountant."</div>
+        <div class="tc-author">Marcus T.</div>
+        <div class="tc-biz">Owner, Fortitude Valley Plumbing</div>
+      </div>
+      <div class="testimonial-card reveal" style="transition-delay:.18s">
+        <div class="tc-quote">"Finally an accountant who replies to emails the same day. I've had three accountants in four years — Cairn is the first one that actually feels like a partner in the business."</div>
+        <div class="tc-author">Priya M.</div>
+        <div class="tc-biz">Founder, Studio Priya Pilates</div>
+      </div>
+      <div class="testimonial-card reveal" style="transition-delay:.26s">
+        <div class="tc-quote">"The fixed-fee model alone is worth it. I never have to think about whether a phone call is going to cost me $200. We just talk. That's rare."</div>
+        <div class="tc-author">James K.</div>
+        <div class="tc-biz">Director, JK Building & Construction</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="section-eyebrow">Get in touch</div>
+      <h2>Book your free<br><em>30-minute call.</em></h2>
+      <p class="section-sub" style="margin-bottom: 3rem;">
+        No obligation. We'll talk about your business, what you need, and whether we're the right fit. Most people leave the call with a clear picture of their next steps — even if they don't sign up.
+      </p>
+      <div class="contact-detail">
+        <span class="cd-label">Phone</span>
+        <span class="cd-val">(07) 3000 0000</span>
+      </div>
+      <div class="contact-detail">
+        <span class="cd-label">Email</span>
+        <span class="cd-val"><a href="#">hello@cairnaccounting.com.au</a></span>
+      </div>
+      <div class="contact-detail">
+        <span class="cd-label">Office</span>
+        <span class="cd-val">Level 2, 89 McLachlan St<br>Fortitude Valley QLD 4006</span>
+      </div>
+      <div class="contact-detail">
+        <span class="cd-label">Hours</span>
+        <span class="cd-val">Mon–Fri 8:30am – 5:00pm<br>After-hours by appointment</span>
+      </div>
+    </div>
+    <div class="contact-form reveal" style="transition-delay:.15s">
+      <form onsubmit="handleSubmit(event)">
+        <div class="cf-row">
+          <label>Full name</label>
+          <input type="text" placeholder="Jane Smith" required>
+        </div>
+        <div class="cf-row">
+          <label>Business name</label>
+          <input type="text" placeholder="Smith & Co">
+        </div>
+        <div class="cf-row">
+          <label>Email</label>
+          <input type="email" placeholder="jane@yourcompany.com.au" required>
+        </div>
+        <div class="cf-row">
+          <label>What do you need help with?</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Tax return</option>
+            <option>Bookkeeping</option>
+            <option>BAS lodgement</option>
+            <option>Business advisory</option>
+            <option>SMSF</option>
+            <option>Not sure — let's talk</option>
+          </select>
+        </div>
+        <div class="cf-row">
+          <label>Anything else we should know?</label>
+          <textarea placeholder="Tell us a bit about your situation..."></textarea>
+        </div>
+        <button type="submit" class="cf-submit">Request a free call →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span><strong>Cairn Accounting</strong> · Brisbane, QLD · ABN 00 000 000 000</span>
+  <span>© 2026 · <a href="#">Privacy</a> · <a href="#">Terms</a></span>
+  <span>CPA Registered Tax Agent</span>
+</footer>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Service switcher
+const services = [
+  {
+    name: 'Tax Returns',
+    price: 'From $350 / year · Fixed fee',
+    desc: 'Individual and business tax returns prepared accurately and lodged on time. We find every legal deduction — most clients are surprised how much they\'ve been leaving on the table.',
+    includes: ['Full review of deductions and offsets', 'Preparation and ATO lodgement', 'Plain-English explanation of your return', 'Fixed price — no surprises']
+  },
+  {
+    name: 'Bookkeeping',
+    price: 'From $200 / month · Fixed fee',
+    desc: 'Monthly reconciliation, categorisation, and reporting so your books are always accurate. No more shoe-box-of-receipts panic at tax time.',
+    includes: ['Monthly bank reconciliation', 'Expense categorisation', 'Monthly P&L report', 'Xero setup and management included']
+  },
+  {
+    name: 'BAS Lodgement',
+    price: 'From $180 / quarter · Fixed fee',
+    desc: 'Quarterly BAS prepared and lodged on time, every time. We check for errors, claim everything you\'re entitled to, and keep the ATO off your back.',
+    includes: ['GST calculation and checking', 'PAYG withholding reconciliation', 'ATO lodgement before deadline', 'Plain-English summary each quarter']
+  },
+  {
+    name: 'Business Advisory',
+    price: 'From $150 / hour · Flexible',
+    desc: 'Strategic financial advice for business owners — pricing, cash flow, structure, growth planning. Real talk about what the numbers actually mean for your business.',
+    includes: ['Cash flow forecasting', 'Pricing and margin analysis', 'Business structure advice', 'Growth and exit planning']
+  },
+  {
+    name: 'SMSF',
+    price: 'From $1,800 / year · Fixed fee',
+    desc: 'Self-managed super fund administration, compliance, and strategy. We handle the ATO requirements so your SMSF stays compliant and your retirement stays on track.',
+    includes: ['Annual financial statements', 'Member statements', 'ATO audit coordination', 'Ongoing compliance monitoring']
+  }
+];
+
+function selectService(i, el) {
+  document.querySelectorAll('.service-item').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  const s = services[i];
+  document.getElementById('sdName').textContent = s.name;
+  document.getElementById('sdPrice').textContent = s.price;
+  document.getElementById('sdDesc').textContent = s.desc;
+  const inc = document.getElementById('sdIncludes');
+  inc.innerHTML = s.includes.map(t => `<div class="sd-inc">${t}</div>`).join('');
+}
+
+// Form
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.cf-submit');
+  btn.textContent = "We'll be in touch within one business day.";
+  btn.style.background = '#2d5a37';
+  btn.disabled = true;
+}
+</script>
+</body>
+</html>
