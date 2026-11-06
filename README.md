@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cairn Accounting
 
-## Getting Started
+Marketing site concept for a Brisbane small-business accounting practice.
 
-First, run the development server:
+## Overview
+
+Cairn Accounting is a front-end marketing experience for a CPA-focused firm aimed at small businesses: tax returns, bookkeeping, BAS lodgement, and advisory. The current build serves a designed static landing page from a Next.js App Router shell (embedded HTML asset), with service details, founder story, testimonials, contact, and a booking-oriented CTA flow.
+
+There is no public live demo yet. Run it locally to preview.
+
+## Features
+
+- Hero positioned for Brisbane small-business accountants (CPA registered messaging)
+- Service catalogue: Tax Returns, Bookkeeping, BAS Lodgement, Business Advisory, SMSF
+- Interactive service detail panel with fixed-fee style pricing copy
+- About section for founder Sarah Cairn and firm positioning
+- Testimonials, contact details, and enquiry-oriented CTAs
+- Qualifications callouts (CPA Australia, Registered Tax Agent, Xero Certified, ASIC)
+
+## Tech stack
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Static marketing markup served via `public/cairn-accounting.html`
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+No public demo is published yet. Suitable for Vercel or any Next.js host when ready.
 
-## Learn More
+## Author
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vince Lapore · [portfolio](https://vincelapore-dev.vercel.app) · Brisbane, AU
