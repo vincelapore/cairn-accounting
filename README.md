@@ -4,26 +4,23 @@ Marketing site concept for a Brisbane small-business accounting practice.
 
 ## Overview
 
-Cairn Accounting is a front-end marketing experience for a CPA-focused firm aimed at small businesses: tax returns, bookkeeping, BAS lodgement, and advisory. The current build serves a designed static landing page from a Next.js App Router shell (embedded HTML asset), with service details, founder story, testimonials, contact, and a booking-oriented CTA flow.
+Front-end for a fictional CPA firm aimed at small businesses: tax returns, bookkeeping, BAS, advisory. The Next.js app is a thin shell; the designed landing page is a static HTML file in `public/` that the home route embeds.
 
-There is no public live demo yet. Run it locally to preview.
+No public demo yet. Run it locally to look around.
 
-## Features
+## What's on the page
 
-- Hero positioned for Brisbane small-business accountants (CPA registered messaging)
-- Service catalogue: Tax Returns, Bookkeeping, BAS Lodgement, Business Advisory, SMSF
-- Interactive service detail panel with fixed-fee style pricing copy
-- About section for founder Sarah Cairn and firm positioning
-- Testimonials, contact details, and enquiry-oriented CTAs
-- Qualifications callouts (CPA Australia, Registered Tax Agent, Xero Certified, ASIC)
+- Hero aimed at Brisbane small-business owners (CPA registered messaging)
+- Services with fee-style copy: Tax Returns, Bookkeeping, BAS Lodgement, Business Advisory, SMSF
+- Clickable service list that swaps the detail panel
+- About section for founder Sarah Cairn
+- Testimonials, contact block, booking-oriented CTAs
+- Badges: CPA Australia, Registered Tax Agent, Xero Certified, ASIC
 
 ## Tech stack
 
-- Next.js (App Router)
-- React
-- TypeScript
-- Tailwind CSS
-- Static marketing markup served via `public/cairn-accounting.html`
+- Next.js (App Router), React, TypeScript, Tailwind CSS
+- Landing content in `public/cairn-accounting.html`
 
 ## Getting started
 
@@ -36,7 +33,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Deploy
 
-No public demo is published yet. Suitable for Vercel or any Next.js host when ready.
+Not published yet. Ready for Vercel (or any Next.js host) when you want a demo URL.
 
 ## Author
 
